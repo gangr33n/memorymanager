@@ -1,0 +1,156 @@
+\hypertarget{Main_8h}{
+\section{Main.h File Reference}
+\label{Main_8h}\index{Main.h@{Main.h}}
+}
+{\ttfamily \#include $<$cstdlib$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$cstring$>$}\par
+{\ttfamily \#include $<$sys/time.h$>$}\par
+{\ttfamily \#include $<$cstdio$>$}\par
+{\ttfamily \#include \char`\"{}FixedSizeMemoryManager.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}VariableSizeMemoryManager.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}MemoryMonitor.h\char`\"{}}\par
+\subsection*{Defines}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{Main_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}~0
+\item 
+\#define \hyperlink{Main_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}~1
+\item 
+\#define \hyperlink{Main_8h_a6d58f9ac447476b4e084d7ca383f5183}{FAILURE}~0
+\item 
+\#define \hyperlink{Main_8h_aa90cac659d18e8ef6294c7ae337f6b58}{SUCCESS}~1
+\item 
+\#define \hyperlink{Main_8h_af2024b663e5962bae93a9f72f33821ae}{NUM\_\-ARGS}~4
+\item 
+\#define \hyperlink{Main_8h_a9e383098f05d964bcb144a5508f1def9}{ARG\_\-TYPE}~1
+\item 
+\#define \hyperlink{Main_8h_a20207ffc8e6f0bdcefb5c42a5b5c3fb8}{FIXED}~\char`\"{}fixed\char`\"{}
+\item 
+\#define \hyperlink{Main_8h_a86626d4d161f4c3958ce1cd99c5b974e}{VARIABLE}~\char`\"{}variable\char`\"{}
+\item 
+\#define \hyperlink{Main_8h_abc5c6b4c2e2bc12eadd440fdb10bfd7c}{MONITOR}~\char`\"{}monitor\char`\"{}
+\item 
+\#define \hyperlink{Main_8h_a8269503d8eba9aea85c30552c6ce2a01}{ARG\_\-SIZE}~2
+\item 
+\#define \hyperlink{Main_8h_ab117546549783a058d0321a287699579}{FILE\_\-NAME}~3
+\item 
+\#define \hyperlink{Main_8h_a368e7704f92e34c8ea0a5c263a95a1b1}{MILLION}~1000000
+\item 
+\#define \hyperlink{Main_8h_af035426824dc95b1a1ceb1b591e82a57}{READ\_\-ONLY}~\char`\"{}r\char`\"{}
+\item 
+\#define \hyperlink{Main_8h_a1129d7e0bed7c31561c8664cfe73ad07}{DELIM}~\char`\"{},\char`\"{}
+\item 
+\#define \hyperlink{Main_8h_ad5131de0b5004c64db5e79e8aac7471e}{LINE\_\-LENGTH}~1000000
+\item 
+\#define \hyperlink{Main_8h_afacd8708d4c64220663e1d08a8f4574d}{WRITE\_\-ONLY}~\char`\"{}w\char`\"{}
+\item 
+\#define \hyperlink{Main_8h_a86b4228adebe2f4a8fe4bf9fbc9c3e8d}{OUT\_\-FILE}~\char`\"{}/tmp/manager.out\char`\"{}
+\item 
+\#define \hyperlink{Main_8h_ace9b0701cfa90a41bb2deec062cbd9b2}{EMPTY\_\-ELT}~0.0
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Wayne Madden $<$\href{mailto:s3197676@student.rmit.edu.au}{\tt s3197676@student.rmit.edu.au}$>$ 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.1
+\end{DoxyVersion}
+\hypertarget{VariableSizeMemoryManager_8h_LICENSE}{}\subsection{LICENSE}\label{VariableSizeMemoryManager_8h_LICENSE}
+Free to re-\/use and reference from within code as long as the original owner is referenced as per GNU standards.\hypertarget{VariableSizeMemoryManager_8h_DESCRIPTION}{}\subsection{DESCRIPTION}\label{VariableSizeMemoryManager_8h_DESCRIPTION}
+Header file for the main test harness for the Memory manager that I am developing for my final year Design project at RMIT University. 
+
+\subsection{Define Documentation}
+\hypertarget{Main_8h_a8269503d8eba9aea85c30552c6ce2a01}{
+\index{Main.h@{Main.h}!ARG\_\-SIZE@{ARG\_\-SIZE}}
+\index{ARG\_\-SIZE@{ARG\_\-SIZE}!Main.h@{Main.h}}
+\subsubsection[{ARG\_\-SIZE}]{\setlength{\rightskip}{0pt plus 5cm}\#define ARG\_\-SIZE~2}}
+\label{Main_8h_a8269503d8eba9aea85c30552c6ce2a01}
+Index of the 'argsv' aray which contains the dimension of the array. \hypertarget{Main_8h_a9e383098f05d964bcb144a5508f1def9}{
+\index{Main.h@{Main.h}!ARG\_\-TYPE@{ARG\_\-TYPE}}
+\index{ARG\_\-TYPE@{ARG\_\-TYPE}!Main.h@{Main.h}}
+\subsubsection[{ARG\_\-TYPE}]{\setlength{\rightskip}{0pt plus 5cm}\#define ARG\_\-TYPE~1}}
+\label{Main_8h_a9e383098f05d964bcb144a5508f1def9}
+Index of the 'argsv' array which contains the memory manager type to be used. \hypertarget{Main_8h_a1129d7e0bed7c31561c8664cfe73ad07}{
+\index{Main.h@{Main.h}!DELIM@{DELIM}}
+\index{DELIM@{DELIM}!Main.h@{Main.h}}
+\subsubsection[{DELIM}]{\setlength{\rightskip}{0pt plus 5cm}\#define DELIM~\char`\"{},\char`\"{}}}
+\label{Main_8h_a1129d7e0bed7c31561c8664cfe73ad07}
+Used to identify seperate matrix values in the input file. \hypertarget{Main_8h_ace9b0701cfa90a41bb2deec062cbd9b2}{
+\index{Main.h@{Main.h}!EMPTY\_\-ELT@{EMPTY\_\-ELT}}
+\index{EMPTY\_\-ELT@{EMPTY\_\-ELT}!Main.h@{Main.h}}
+\subsubsection[{EMPTY\_\-ELT}]{\setlength{\rightskip}{0pt plus 5cm}\#define EMPTY\_\-ELT~0.0}}
+\label{Main_8h_ace9b0701cfa90a41bb2deec062cbd9b2}
+Value output when requested index of array is unused. \hypertarget{Main_8h_a6d58f9ac447476b4e084d7ca383f5183}{
+\index{Main.h@{Main.h}!FAILURE@{FAILURE}}
+\index{FAILURE@{FAILURE}!Main.h@{Main.h}}
+\subsubsection[{FAILURE}]{\setlength{\rightskip}{0pt plus 5cm}\#define FAILURE~0}}
+\label{Main_8h_a6d58f9ac447476b4e084d7ca383f5183}
+Negative return value for functions which may or may not complete successfully. Can be used in boolean logic. \hypertarget{Main_8h_aa93f0eb578d23995850d61f7d61c55c1}{
+\index{Main.h@{Main.h}!FALSE@{FALSE}}
+\index{FALSE@{FALSE}!Main.h@{Main.h}}
+\subsubsection[{FALSE}]{\setlength{\rightskip}{0pt plus 5cm}\#define FALSE~0}}
+\label{Main_8h_aa93f0eb578d23995850d61f7d61c55c1}
+Boolean false value for evaluating true/false conditions \hypertarget{Main_8h_ab117546549783a058d0321a287699579}{
+\index{Main.h@{Main.h}!FILE\_\-NAME@{FILE\_\-NAME}}
+\index{FILE\_\-NAME@{FILE\_\-NAME}!Main.h@{Main.h}}
+\subsubsection[{FILE\_\-NAME}]{\setlength{\rightskip}{0pt plus 5cm}\#define FILE\_\-NAME~3}}
+\label{Main_8h_ab117546549783a058d0321a287699579}
+Index of the 'argsv' aray which contains the input file name. \hypertarget{Main_8h_a20207ffc8e6f0bdcefb5c42a5b5c3fb8}{
+\index{Main.h@{Main.h}!FIXED@{FIXED}}
+\index{FIXED@{FIXED}!Main.h@{Main.h}}
+\subsubsection[{FIXED}]{\setlength{\rightskip}{0pt plus 5cm}\#define FIXED~\char`\"{}fixed\char`\"{}}}
+\label{Main_8h_a20207ffc8e6f0bdcefb5c42a5b5c3fb8}
+Constant input string used to select the fixed size memory manager. \hypertarget{Main_8h_ad5131de0b5004c64db5e79e8aac7471e}{
+\index{Main.h@{Main.h}!LINE\_\-LENGTH@{LINE\_\-LENGTH}}
+\index{LINE\_\-LENGTH@{LINE\_\-LENGTH}!Main.h@{Main.h}}
+\subsubsection[{LINE\_\-LENGTH}]{\setlength{\rightskip}{0pt plus 5cm}\#define LINE\_\-LENGTH~1000000}}
+\label{Main_8h_ad5131de0b5004c64db5e79e8aac7471e}
+Used to allocated space for temporary input from input file. \hypertarget{Main_8h_a368e7704f92e34c8ea0a5c263a95a1b1}{
+\index{Main.h@{Main.h}!MILLION@{MILLION}}
+\index{MILLION@{MILLION}!Main.h@{Main.h}}
+\subsubsection[{MILLION}]{\setlength{\rightskip}{0pt plus 5cm}\#define MILLION~1000000}}
+\label{Main_8h_a368e7704f92e34c8ea0a5c263a95a1b1}
+Used to convert time in seconds to microseconds for output. \hypertarget{Main_8h_abc5c6b4c2e2bc12eadd440fdb10bfd7c}{
+\index{Main.h@{Main.h}!MONITOR@{MONITOR}}
+\index{MONITOR@{MONITOR}!Main.h@{Main.h}}
+\subsubsection[{MONITOR}]{\setlength{\rightskip}{0pt plus 5cm}\#define MONITOR~\char`\"{}monitor\char`\"{}}}
+\label{Main_8h_abc5c6b4c2e2bc12eadd440fdb10bfd7c}
+Constant input string used to select the variable size memory monitor. \hypertarget{Main_8h_af2024b663e5962bae93a9f72f33821ae}{
+\index{Main.h@{Main.h}!NUM\_\-ARGS@{NUM\_\-ARGS}}
+\index{NUM\_\-ARGS@{NUM\_\-ARGS}!Main.h@{Main.h}}
+\subsubsection[{NUM\_\-ARGS}]{\setlength{\rightskip}{0pt plus 5cm}\#define NUM\_\-ARGS~4}}
+\label{Main_8h_af2024b663e5962bae93a9f72f33821ae}
+The number of arguments expected by the program. \hypertarget{Main_8h_a86b4228adebe2f4a8fe4bf9fbc9c3e8d}{
+\index{Main.h@{Main.h}!OUT\_\-FILE@{OUT\_\-FILE}}
+\index{OUT\_\-FILE@{OUT\_\-FILE}!Main.h@{Main.h}}
+\subsubsection[{OUT\_\-FILE}]{\setlength{\rightskip}{0pt plus 5cm}\#define OUT\_\-FILE~\char`\"{}/tmp/manager.out\char`\"{}}}
+\label{Main_8h_a86b4228adebe2f4a8fe4bf9fbc9c3e8d}
+Location of the output file. \hypertarget{Main_8h_af035426824dc95b1a1ceb1b591e82a57}{
+\index{Main.h@{Main.h}!READ\_\-ONLY@{READ\_\-ONLY}}
+\index{READ\_\-ONLY@{READ\_\-ONLY}!Main.h@{Main.h}}
+\subsubsection[{READ\_\-ONLY}]{\setlength{\rightskip}{0pt plus 5cm}\#define READ\_\-ONLY~\char`\"{}r\char`\"{}}}
+\label{Main_8h_af035426824dc95b1a1ceb1b591e82a57}
+Used to open input file in 'read' mode. \hypertarget{Main_8h_aa90cac659d18e8ef6294c7ae337f6b58}{
+\index{Main.h@{Main.h}!SUCCESS@{SUCCESS}}
+\index{SUCCESS@{SUCCESS}!Main.h@{Main.h}}
+\subsubsection[{SUCCESS}]{\setlength{\rightskip}{0pt plus 5cm}\#define SUCCESS~1}}
+\label{Main_8h_aa90cac659d18e8ef6294c7ae337f6b58}
+Positive return value for functions which may or may not complete successfully. Can be used in boolean logic. \hypertarget{Main_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{
+\index{Main.h@{Main.h}!TRUE@{TRUE}}
+\index{TRUE@{TRUE}!Main.h@{Main.h}}
+\subsubsection[{TRUE}]{\setlength{\rightskip}{0pt plus 5cm}\#define TRUE~1}}
+\label{Main_8h_aa8cecfc5c5c054d2875c03e77b7be15d}
+Boolean true value for evaluating true/false conditions \hypertarget{Main_8h_a86626d4d161f4c3958ce1cd99c5b974e}{
+\index{Main.h@{Main.h}!VARIABLE@{VARIABLE}}
+\index{VARIABLE@{VARIABLE}!Main.h@{Main.h}}
+\subsubsection[{VARIABLE}]{\setlength{\rightskip}{0pt plus 5cm}\#define VARIABLE~\char`\"{}variable\char`\"{}}}
+\label{Main_8h_a86626d4d161f4c3958ce1cd99c5b974e}
+Constant input string used to select the variable size memory manager. \hypertarget{Main_8h_afacd8708d4c64220663e1d08a8f4574d}{
+\index{Main.h@{Main.h}!WRITE\_\-ONLY@{WRITE\_\-ONLY}}
+\index{WRITE\_\-ONLY@{WRITE\_\-ONLY}!Main.h@{Main.h}}
+\subsubsection[{WRITE\_\-ONLY}]{\setlength{\rightskip}{0pt plus 5cm}\#define WRITE\_\-ONLY~\char`\"{}w\char`\"{}}}
+\label{Main_8h_afacd8708d4c64220663e1d08a8f4574d}
+Used to open output file in 'write' mode. 

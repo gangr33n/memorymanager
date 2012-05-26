@@ -1,0 +1,15 @@
+factor = 10
+for all items
+   if factor * int != math.floor(factor*int)
+      factor = factor * 10
+end for
+
+for all items
+   int = float * factor
+end for
+
+----
+
+for all items
+   float = (float) int / factor
+end for

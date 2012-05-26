@@ -1,0 +1,77 @@
+\hypertarget{classBitmap}{
+\section{Bitmap Class Reference}
+\label{classBitmap}\index{Bitmap@{Bitmap}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBitmap_ac625c8d96a68956f1b879eea3e94a7da}{Bitmap} (unsigned int)
+\item 
+\hyperlink{classBitmap_a72d2a301ec1eb1c8d0f3d64823659a8e}{$\sim$Bitmap} ()
+\item 
+unsigned int \hyperlink{classBitmap_afcb1fce13a738274db91109b7afa86e7}{getBit} (unsigned int)
+\item 
+void \hyperlink{classBitmap_a499f1680d78307b7663e9671847dd87c}{setBits} (unsigned int, unsigned int)
+\item 
+void \hyperlink{classBitmap_ac81a92cbbdb42ced42dd649f6e8260df}{clearBits} (unsigned int, unsigned int)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBitmap_ac625c8d96a68956f1b879eea3e94a7da}{
+\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\index{Bitmap@{Bitmap}!Bitmap@{Bitmap}}
+\subsubsection[{Bitmap}]{\setlength{\rightskip}{0pt plus 5cm}Bitmap::Bitmap (unsigned int {\em bits})}}
+\label{classBitmap_ac625c8d96a68956f1b879eea3e94a7da}
+Constructor for the \hyperlink{classBitmap}{Bitmap} object, assigns and initialises memory
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em bits}]Number of bits in the map \end{DoxyParams}
+\hypertarget{classBitmap_a72d2a301ec1eb1c8d0f3d64823659a8e}{
+\index{Bitmap@{Bitmap}!$\sim$Bitmap@{$\sim$Bitmap}}
+\index{$\sim$Bitmap@{$\sim$Bitmap}!Bitmap@{Bitmap}}
+\subsubsection[{$\sim$Bitmap}]{\setlength{\rightskip}{0pt plus 5cm}Bitmap::$\sim$Bitmap ()}}
+\label{classBitmap_a72d2a301ec1eb1c8d0f3d64823659a8e}
+Destructur for the bitmap object, deletes the dynamic memory allocated to the map 
+
+\subsection{Member Function Documentation}
+\hypertarget{classBitmap_ac81a92cbbdb42ced42dd649f6e8260df}{
+\index{Bitmap@{Bitmap}!clearBits@{clearBits}}
+\index{clearBits@{clearBits}!Bitmap@{Bitmap}}
+\subsubsection[{clearBits}]{\setlength{\rightskip}{0pt plus 5cm}void Bitmap::clearBits (unsigned int {\em n}, \/  unsigned int {\em c})}}
+\label{classBitmap_ac81a92cbbdb42ced42dd649f6e8260df}
+Clears the selected bits of the map
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]The first bit to be cleared \item[{\em c}]The number of bits to be cleared \end{DoxyParams}
+\hypertarget{classBitmap_afcb1fce13a738274db91109b7afa86e7}{
+\index{Bitmap@{Bitmap}!getBit@{getBit}}
+\index{getBit@{getBit}!Bitmap@{Bitmap}}
+\subsubsection[{getBit}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Bitmap::getBit (unsigned int {\em n})}}
+\label{classBitmap_afcb1fce13a738274db91109b7afa86e7}
+Returns the state of a selected bit in the map
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]The bit number to be retrieved\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status of bit: EMPTY if unused, USED if in use 
+\end{DoxyReturn}
+\hypertarget{classBitmap_a499f1680d78307b7663e9671847dd87c}{
+\index{Bitmap@{Bitmap}!setBits@{setBits}}
+\index{setBits@{setBits}!Bitmap@{Bitmap}}
+\subsubsection[{setBits}]{\setlength{\rightskip}{0pt plus 5cm}void Bitmap::setBits (unsigned int {\em n}, \/  unsigned int {\em c})}}
+\label{classBitmap_a499f1680d78307b7663e9671847dd87c}
+Sets the selected bits of the map
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em n}]The first bit to be set \item[{\em c}]The number of bits to be set \end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{Bitmap_8h}{Bitmap.h}\item 
+Bitmap.cpp\end{DoxyCompactItemize}
