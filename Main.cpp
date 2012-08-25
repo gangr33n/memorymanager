@@ -12,16 +12,17 @@ int main(int argc, char* argv[])
    MemoryManager* manager;
    int i, j, matrixSide;
    float** temp;
-   struct timeval start, end;
+   /*struct timeval start, end;*/
    FILE* fp;
    char line[LINE_LENGTH];
    char* token;
+   float data;
 
    /*check for correct command line input*/
    if (argc != NUM_ARGS)
    {
-      std::cerr << "Please select a memory manager by entering" <<
-                  "'./test {fixed|fixed_monitor|variable|variable_monitor}" <<
+      cerr << "Please select a memory manager by entering" <<
+            "'memorymanager {fixed|fixed_monitor|variable|variable_monitor}" <<
                                                 " {arraySize} {matrixFile}'\n";
       exit(EXIT_FAILURE);
    }
@@ -33,7 +34,7 @@ int main(int argc, char* argv[])
       temp[i] = new float[matrixSide];
    
    /*1. initialise memory*/
-   gettimeofday(&start, NULL);
+   /*gettimeofday(&start, NULL);*/
    if (strcmp(argv[ARG_TYPE], FIXED) == 0)
       manager = new FixedSizeMemoryManager(matrixSide, sizeof(float));
    else if (strcmp(argv[ARG_TYPE], VARIABLE) == 0)
@@ -42,21 +43,21 @@ int main(int argc, char* argv[])
       manager = new MemoryMonitor(matrixSide, sizeof(float));
    else
    {
-      std::cerr << "Invalid Manager type!\n";
+      cerr << "Invalid Manager type!\n";
       exit(EXIT_FAILURE);
    }
-   gettimeofday(&end, NULL);
-   std::cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";
+   /*gettimeofday(&end, NULL);
+   cout << ((end.tv_sec*MILLION+end.tv_usec) -
+                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
 
    /*2. load data*/
    fp = fopen(argv[FILE_NAME], READ_ONLY);
    if (fp == NULL)
    {
-      std::cerr << "Unable to open input file!\n";
+      cerr << "Unable to open input file!\n";
       exit(EXIT_FAILURE);
    }
-   gettimeofday(&start, NULL);
+   /*gettimeofday(&start, NULL);*/
    i = 0;
    while (i < matrixSide && fgets(line, LINE_LENGTH, fp) != NULL)
    {
@@ -69,13 +70,13 @@ int main(int argc, char* argv[])
       } while (j < matrixSide && (token = strtok(NULL, DELIM)) != NULL);
       i++;
    }
-   gettimeofday(&end, NULL);
+   /*gettimeofday(&end, NULL);
    fclose(fp);
-   std::cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";
+   cout << ((end.tv_sec*MILLION+end.tv_usec) -
+                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
    
    /*3. request and set each element*/
-   gettimeofday(&start, NULL);
+   /*gettimeofday(&start, NULL);*/
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
@@ -85,56 +86,56 @@ int main(int argc, char* argv[])
          manager->set(i, j, &temp[i][j], sizeof(float));
       }
    }
-   gettimeofday(&end, NULL);
-   std::cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";
+   /*gettimeofday(&end, NULL);
+   cout << ((end.tv_sec*MILLION+end.tv_usec) -
+                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
 
    /*4. access each element*/
-   gettimeofday(&start, NULL);
+   /*gettimeofday(&start, NULL);*/
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
       {
-         if (manager->get(i, j) != NULL)
-            std::cerr << *(float*)manager->get(i, j) << " ";
+         if (manager->get(&data, i, j))
+            cerr << data << " ";
          else
-            std::cerr << EMPTY_ELT << " ";
+            cerr << EMPTY_ELT << " ";
       }
-      std::cerr << "\n";
+      cerr << "\n";
    }
-   gettimeofday(&end, NULL);
-   std::cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";
+   /*gettimeofday(&end, NULL);
+   cout << ((end.tv_sec*MILLION+end.tv_usec) -
+                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
 
    /*5. write results to disk*/
    fp = fopen(OUT_FILE, WRITE_ONLY);
    if (fp == NULL)
    {
-      std::cerr << "Unable to open output file!\n";
+      cerr << "Unable to open output file!\n";
       exit(EXIT_FAILURE);
    }
-   gettimeofday(&start, NULL);
+   /*gettimeofday(&start, NULL);*/
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
       {
          if (j != 0)
             fprintf(fp, ",");
-         if (manager->get(i, j) != NULL)
-            fprintf(fp, "%f", *(float*)manager->get(i, j));
+         if (manager->get(&data, i, j))
+            fprintf(fp, "%f", data);
          else
             fprintf(fp, "%f", EMPTY_ELT);
       }
       fprintf(fp, "\n");
    }
-   gettimeofday(&end, NULL);
+   /*gettimeofday(&end, NULL);
    fclose(fp);
    unlink(OUT_FILE);
-   std::cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";
+   cout << ((end.tv_sec*MILLION+end.tv_usec) -
+                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
 
    /*6. delete every second element, access every element*/
-   gettimeofday(&start, NULL);
+   /*gettimeofday(&start, NULL);*/
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j+=2)
@@ -142,25 +143,25 @@ int main(int argc, char* argv[])
          manager->del(i, j);
       }
    }
-   gettimeofday(&end, NULL);
-   std::cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";
+   /*gettimeofday(&end, NULL);
+   cout << ((end.tv_sec*MILLION+end.tv_usec) -
+                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
 
    /*7. access every element, test shows performance after deletion*/
-   gettimeofday(&start, NULL);
+   /*gettimeofday(&start, NULL);*/
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
       {
-         if (manager->get(i, j) != NULL)
-            std::cerr << *(float*)manager->get(i, j) << " ";
+         if (manager->get(&data, i, j))
+            cerr << data << " ";
          else
-            std::cerr << EMPTY_ELT << " ";
+            cerr << EMPTY_ELT << " ";
       }
-      std::cerr << "\n";
+      cerr << "\n";
    }
-   gettimeofday(&end, NULL);
-   std::cout << ((end.tv_sec*MILLION+end.tv_usec) -
+   /*gettimeofday(&end, NULL);
+   cout << ((end.tv_sec*MILLION+end.tv_usec) -
                                  (start.tv_sec*MILLION+start.tv_usec)) << "us";
 
    /*free local memory*/
@@ -169,4 +170,7 @@ int main(int argc, char* argv[])
    delete[] temp;
    manager->cleanup();
    delete manager;
+
+   cout << "Press enter to continue...";
+   cin.ignore(1);
 }

@@ -1,7 +1,7 @@
 /**
  * @file
  * @author Wayne Madden <s3197676@student.rmit.edu.au>
- * @version 0.1
+ * @version 0.2
  *
  * @section LICENSE
  * Free to re-use and reference from within code as long as the original owner
@@ -33,7 +33,7 @@ class MemoryMonitor : public MemoryManager
    
    /*methods*/
    public:
-      void* get(unsigned int, unsigned int);
+      unsigned int get(void*, unsigned int, unsigned int);
       unsigned int set(unsigned int, unsigned int, void*, unsigned int);
       unsigned int del(unsigned int, unsigned int);
       void cleanup();

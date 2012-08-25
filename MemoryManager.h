@@ -1,7 +1,7 @@
 /**
  * @file
  * @author Wayne Madden <s3197676@student.rmit.edu.au>
- * @version 0.1
+ * @version 0.2
  *
  * @section LICENSE
  * Free to re-use and reference from within code as long as the original owner
@@ -18,6 +18,8 @@
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
+
+#include <cuda_runtime_api.h>
 
 #define FALSE 0
 #define TRUE 1
@@ -39,8 +41,8 @@ class MemoryManager
       unsigned int getItemSize();
       void setItemSize(unsigned int);
       unsigned char* getMemory();
-      void setMemory();
-      virtual void* get(unsigned int, unsigned int) = 0;
+      unsigned int setMemory();
+      virtual unsigned int get(void*, unsigned int, unsigned int) = 0;
       virtual unsigned int set(unsigned int, unsigned int, void*, unsigned int) = 0;
       virtual unsigned int del(unsigned int, unsigned int) = 0;
       virtual void cleanup() = 0;
