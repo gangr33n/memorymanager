@@ -11,15 +11,15 @@ Bitmap::Bitmap(unsigned int bits)
    
    this->bits = bits;
    
-   map = new uint8_t[bits];
+   map = new uint8_t[bits/BYTE_SIZE + 1];
    if (map == NULL)
    {
-      std::cout << "Unable to allocate " << bits/BYTE_SIZE
+      std::cout << "Unable to allocate " << bits/BYTE_SIZE + 1
                                           << " bytes of memory! Exiting...\n";
       exit(EXIT_FAILURE);
    }
 
-   for (i = 0; i < bits/BYTE_SIZE; i++)
+   for (i = 0; i < bits/BYTE_SIZE+1; i++)
        map[i] = 0;
 }
 
@@ -34,6 +34,7 @@ Bitmap::~Bitmap()
 /**
  * Returns the state of a selected bit in the map
  *
+ * @return 'EMPTY' when the bit is low, 'USED' when it is high
  * @param n The bit number to be retrieved
  */
 unsigned int Bitmap::getBit(unsigned int n)

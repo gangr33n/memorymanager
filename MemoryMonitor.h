@@ -28,7 +28,7 @@ class MemoryMonitor : public MemoryManager
 {
    /*constructor*/
    public:
-      MemoryMonitor(unsigned int, unsigned int);
+      MemoryMonitor(unsigned int, unsigned int, unsigned int, float);
       ~MemoryMonitor();
    
    /*methods*/
@@ -36,6 +36,7 @@ class MemoryMonitor : public MemoryManager
       unsigned int get(void*, unsigned int, unsigned int);
       unsigned int set(unsigned int, unsigned int, void*, unsigned int);
       unsigned int del(unsigned int, unsigned int);
+	  MonitorBucket* getReferences();
       void cleanup();
 
    /*variables*/

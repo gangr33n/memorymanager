@@ -15,7 +15,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <cstring>
-/*#include <sys/time.h>*/
+#include <Windows.h>
 #include <cstdio>
 
 #include "FixedSizeMemoryManager.h"
@@ -41,11 +41,13 @@ using namespace std;
 #define MILLION 1000000
 
 #define READ_ONLY "r"
-#define DELIM ","
+#define DELIM ", "
 #define LINE_LENGTH 1000000
 
 #define WRITE_ONLY "w"
-/*#define OUT_FILE "/tmp/manager.out"*/
-#define OUT_FILE "manager.out"
+#define OUT_FILE "testOut\manager.out"
 
 #define EMPTY_ELT 0.0
+
+#define VARIABLE_UTILISATION 1.0
+#define MONITOR_UTILISATION 1.0

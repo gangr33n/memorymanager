@@ -8,34 +8,32 @@
  * is referenced as per GNU standards
  *
  * @section DESCRIPTION
- * This is an early version of the Fixed Length Memory manager that I am
+ * This is an early version of the variable length Memory manager that I am
  * developing for my final year Design project at RMIT University
  */
+ 
+#ifndef CMEMORYMONITOR
+#define CMEMORYMONITOR
 
-#ifndef FIXEDSIZEMEMORYMANAGER
-#define FIXEDSIZEMEMORYMANAGER
+#include "CMemoryManager.h"
+#include "MemoryMonitor.h"
+#include "Bitmap.h"
 
-#include "MemoryManager.h"
-
-#define FIXED_UTILISATION 1.0
-
-class FixedSizeMemoryManager : public MemoryManager
+class CMemoryMonitor : public CMemoryManager
 {
    /*constructor*/
    public:
-      FixedSizeMemoryManager(unsigned int, unsigned int, unsigned int);
-      ~FixedSizeMemoryManager();
+      ~CMemoryMonitor();
    
    /*methods*/
    public:
       unsigned int get(void*, unsigned int, unsigned int);
       unsigned int set(unsigned int, unsigned int, void*, unsigned int);
-      unsigned int del(unsigned int, unsigned int);
-      void cleanup();
+	  virtual void copyReferences(MemoryMonitor*);
 
    /*variables*/
    private:
-      
+      MonitorBucket* references; /*REFERS TO DEVICE MEMORY*/
 };
 
 #endif

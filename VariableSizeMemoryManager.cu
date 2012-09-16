@@ -1,20 +1,24 @@
 #include "VariableSizeMemoryManager.h"
 
 /**
- * Constructor for the variable length Memory Manager object, assigns total memory
- * frame
+ * Constructor for the variable length Memory Manager object, assigns total
+ * memory frame
  *
- * @param numBuckets Number of items to be stored
+ * @param x Number of rows to be stored
+ * @param y Number of columns to be stored
  * @param maxItemSize Maximum iize to be used for each item by the Memory
  * Manager
+ * @param utlisation Maxiumum percentage of matrix space that will be used
  */
-VariableSizeMemoryManager::VariableSizeMemoryManager(unsigned int dimension,
-                                                      unsigned int maxItemSize)
+VariableSizeMemoryManager::VariableSizeMemoryManager(unsigned int x,
+                  unsigned int y, unsigned int maxItemSize, float utilisation)
 {
    unsigned int i;
 
    setItemSize(maxItemSize);
-   setDimension(dimension);
+   setXDimension(x);
+   setYDimension(y);
+   setUtilisation(utilisation);
 
    bitmap = new Bitmap(getNumBuckets()*getItemSize());
    references = new VariableSizeBucket[getNumBuckets()];
@@ -54,9 +58,10 @@ VariableSizeMemoryManager::~VariableSizeMemoryManager()
 unsigned int VariableSizeMemoryManager::get(void* dest, unsigned int x,
                                                                unsigned int y)
 {
-   if (references[x*getDimension()+y].firstByte == NULL)
+   if (references[x*getXDimension()+y].firstByte == NULL)
       return FAILURE;
-   cudaMemcpy(dest, references[x*getDimension()+y].firstByte, getItemSize(), cudaMemcpyDeviceToHost);
+   cudaMemcpy(dest, references[x*getXDimension()+y].firstByte, getItemSize(),
+                                                      cudaMemcpyDeviceToHost);
    return SUCCESS;
 }
 
@@ -70,13 +75,26 @@ unsigned int VariableSizeMemoryManager::get(void* dest, unsigned int x,
  * @param data Pointer to the data that is to be stored
  * @param size Size of the data to be stored
  */
-unsigned int VariableSizeMemoryManager::set(unsigned int x, unsigned int y, void* data,
-                                                            unsigned int size)
+unsigned int VariableSizeMemoryManager::set(unsigned int x, unsigned int y,
+                                                void* data, unsigned int size)
 {
    unsigned int i, j, flag, temp;
 
    if (size > getItemSize())
       return FAILURE;
+
+   /*if element is already set, update the value*/
+   if (references[x*getXDimension()+y].firstByte != NULL)
+   {
+      if (references[x*getXDimension()+y].size == size)
+	  {
+         cudaMemcpy(references[x*getXDimension()+y].firstByte, data, size,
+                                                      cudaMemcpyHostToDevice);
+         return SUCCESS;
+	  }
+      else
+         this->del(x, y);
+   }
 
    for (i = nextFree; i != nextFree-1; i++)
    {
@@ -90,13 +108,16 @@ unsigned int VariableSizeMemoryManager::set(unsigned int x, unsigned int y, void
       if (flag)
       {
          i += j;
+		 if (i >= getNumBuckets() * getItemSize())
+			 i = 0;
          continue;
       }
 
       bitmap->setBits(i, size);
-	  references[x*getDimension()+y].size = size;
-	  references[x*getDimension()+y].firstByte = getMemory() + i;
-	  cudaMemcpy(references[x*getDimension()+y].firstByte, data, size, cudaMemcpyHostToDevice);
+	  references[x*getXDimension()+y].size = size;
+	  references[x*getXDimension()+y].firstByte = getMemory() + i;
+	  cudaMemcpy(references[x*getXDimension()+y].firstByte, data, size,
+                                                      cudaMemcpyHostToDevice);
 
       temp = nextFree;
       do
@@ -104,7 +125,7 @@ unsigned int VariableSizeMemoryManager::set(unsigned int x, unsigned int y, void
          if (bitmap->getBit(nextFree) == EMPTY)
             break;
          nextFree++;
-         if (nextFree == getNumBuckets())
+         if (nextFree == getNumBuckets() * getItemSize())
             nextFree = 0;
       } while (temp != nextFree);
 
@@ -125,16 +146,26 @@ unsigned int VariableSizeMemoryManager::del(unsigned int x, unsigned int y)
 {
    unsigned int bit;
 
-   if (references[x*getDimension()+y].firstByte == NULL)
+   if (references[x*getXDimension()+y].firstByte == NULL)
       return FAILURE;
    
-   bit = references[x*getDimension()+y].firstByte - getMemory();
-   bitmap->clearBits(bit, references[x*getDimension()+y].size);
+   bit = references[x*getXDimension()+y].firstByte - getMemory();
+   bitmap->clearBits(bit, references[x*getXDimension()+y].size);
 
-   references[x*getDimension()+y].firstByte = NULL;
-   references[x*getDimension()+y].size = 0;
+   references[x*getXDimension()+y].firstByte = NULL;
+   references[x*getXDimension()+y].size = 0;
    
    return SUCCESS;
+}
+
+/**
+ * Returns a pointer to the references array
+ *
+ * @return A pointer to the references array
+ */
+VariableSizeBucket* VariableSizeMemoryManager::getReferences()
+{
+   return references;
 }
 
 /**

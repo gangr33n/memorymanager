@@ -4,14 +4,21 @@
  * Constructor for the fixed length Memory Manager object, assigns total memory
  * frame
  *
- * @param numBuckets Number of items to be stored
- * @param maxItemSize Size to be used for each item by the Memory Manager
+ * @param x Number of rows to be stored
+ * @param y Number of columns to be stored
+ * @param maxItemSize Maximum iize to be used for each item by the Memory
+ * Manager
  */
-FixedSizeMemoryManager::FixedSizeMemoryManager(unsigned int dimension,
+FixedSizeMemoryManager::FixedSizeMemoryManager(unsigned int x, unsigned int y,
                                                          unsigned int itemSize)
 {
+   unsigned int i;
+   unsigned char blankData;
+
    setItemSize(itemSize);
-   setDimension(dimension);
+   setXDimension(x);
+   setYDimension(y);
+   setUtilisation(FIXED_UTILISATION);
 
    if (setMemory() == FAILURE)
    {
@@ -19,8 +26,11 @@ FixedSizeMemoryManager::FixedSizeMemoryManager(unsigned int dimension,
       exit(EXIT_FAILURE);
    }
 
-   cudaMemcpy(getMemory(), NULL, getNumBuckets()*itemSize,
-      cudaMemcpyHostToDevice);
+   /*zero memory*/
+   blankData = 0;
+   for (i = 0; i < getNumBuckets()*getItemSize(); i++)
+      cudaMemcpy(getMemory()+i, &blankData, sizeof(char),
+         cudaMemcpyHostToDevice);
 }
 
 /**
@@ -43,7 +53,7 @@ FixedSizeMemoryManager::~FixedSizeMemoryManager()
 unsigned int FixedSizeMemoryManager::get(void* dest, unsigned int x,
                                                                unsigned int y)
 {
-   cudaMemcpy(dest, getMemory()+(x*getDimension()+y)*getItemSize(),
+   cudaMemcpy(dest, getMemory()+(x*getXDimension()+y)*getItemSize(),
       getItemSize(), cudaMemcpyDeviceToHost);
    return SUCCESS;
 }
@@ -64,7 +74,7 @@ unsigned int FixedSizeMemoryManager::set(unsigned int x, unsigned int y,
    if (size > getItemSize())
       return FAILURE;
 
-   cudaMemcpy(getMemory()+(x*getDimension()+y)*getItemSize(), data,
+   cudaMemcpy(getMemory()+(x*getXDimension()+y)*getItemSize(), data,
                                        getItemSize(), cudaMemcpyHostToDevice);
 
    return SUCCESS;
@@ -85,7 +95,7 @@ unsigned int FixedSizeMemoryManager::del(unsigned int x, unsigned int y)
 
    c = 0;
    for (i = 0; i < getItemSize(); i++)
-      cudaMemcpy(getMemory()+(x*getDimension()+y)*getItemSize()+i, &c,
+      cudaMemcpy(getMemory()+(x*getXDimension()+y)*getItemSize()+i, &c,
                                           sizeof(char), cudaMemcpyHostToDevice);
    
    return SUCCESS;

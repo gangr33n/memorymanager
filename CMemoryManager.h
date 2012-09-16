@@ -12,8 +12,8 @@
  * developing for my final year Design project at RMIT University
  */
 
-#ifndef MEMORYMANAGER
-#define MEMORYMANAGER
+#ifndef CMEMORYMANAGER
+#define CMEMORYMANAGER
 
 #include <iostream>
 #include <cstring>
@@ -21,36 +21,28 @@
 
 #include <cuda_runtime_api.h>
 
+#include "MemoryManager.h"
+
 #define FALSE 0
 #define TRUE 1
 
 #define FAILURE 0
 #define SUCCESS 1
 
-class MemoryManager
+class CMemoryManager
 {
-   /*constructor*/
-   public:
-      ~MemoryManager();
-      
    /*methods*/
    public:
       unsigned int getXDimension();
       unsigned int getYDimension();
       unsigned int getNumBuckets();
-      void setXDimension(unsigned int);
-      void setYDimension(unsigned int);
       unsigned int getItemSize();
-      void setItemSize(unsigned int);
       unsigned char* getMemory();
-      unsigned int setMemory();
-	  void setUtilisation(float);
 	  float getUtilisation();
       virtual unsigned int get(void*, unsigned int, unsigned int) = 0;
       virtual unsigned int set(unsigned int, unsigned int, void*,
                                                             unsigned int) = 0;
-      virtual unsigned int del(unsigned int, unsigned int) = 0;
-      virtual void cleanup() = 0;
+	  void copy(MemoryManager*);
 
    /*variables*/
    private:

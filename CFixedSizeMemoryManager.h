@@ -12,26 +12,17 @@
  * developing for my final year Design project at RMIT University
  */
 
-#ifndef FIXEDSIZEMEMORYMANAGER
-#define FIXEDSIZEMEMORYMANAGER
+#ifndef CFIXEDSIZEMEMORYMANAGER
+#define CFIXEDSIZEMEMORYMANAGER
 
-#include "MemoryManager.h"
+#include "CMemoryManager.h"
 
-#define FIXED_UTILISATION 1.0
-
-class FixedSizeMemoryManager : public MemoryManager
+class CFixedSizeMemoryManager : public CMemoryManager
 {
-   /*constructor*/
-   public:
-      FixedSizeMemoryManager(unsigned int, unsigned int, unsigned int);
-      ~FixedSizeMemoryManager();
-   
    /*methods*/
    public:
       unsigned int get(void*, unsigned int, unsigned int);
       unsigned int set(unsigned int, unsigned int, void*, unsigned int);
-      unsigned int del(unsigned int, unsigned int);
-      void cleanup();
 
    /*variables*/
    private:

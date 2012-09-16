@@ -10,13 +10,23 @@ MemoryManager::~MemoryManager()
 }
 
 /**
- * Accessor for the numBuckets variable
+ * Accessor for the x dimension of the matrix
  *
- * @return A copy of the numBuckets variable
+ * @return A copy of the xdimension variable
  */
-unsigned int MemoryManager::getDimension()
+unsigned int MemoryManager::getXDimension()
 {
-   return dimension;
+   return xdimension;
+}
+
+/**
+ * Accessor for the y dimension of the matrix
+ *
+ * @return A copy of the ydimension variable
+ */
+unsigned int MemoryManager::getYDimension()
+{
+   return ydimension;
 }
 
 /**
@@ -26,17 +36,27 @@ unsigned int MemoryManager::getDimension()
  */
 unsigned int MemoryManager::getNumBuckets()
 {
-   return dimension * dimension;
+   return xdimension * ydimension;
 }
 
 /**
- * Sets the number of buckets used by the memory manager
+ * Sets the x dimension of the memory manager
  *
- * @numBuckets The new number of buckets for the manager
+ * @param newx The new x dimension for the manager
  */
-void MemoryManager::setDimension(unsigned int dimension)
+void MemoryManager::setXDimension(unsigned int newx)
 {
-   this->dimension = dimension;
+   this->xdimension = newx;
+}
+
+/**
+ * Sets the y dimension of the memory manager
+ *
+ * @param newy The new y dimension for the manager
+ */
+void MemoryManager::setYDimension(unsigned int newy)
+{
+   this->ydimension = newy;
 }
 
 /**
@@ -52,7 +72,7 @@ unsigned int MemoryManager::getItemSize()
 /**
  * Sets the item size stored by the memory manager
  *
- * @numBuckets The new item size for the manager
+ * @param itemSize The new item size for the manager
  */
 void MemoryManager::setItemSize(unsigned int itemSize)
 {
@@ -71,10 +91,33 @@ unsigned char* MemoryManager::getMemory()
 
 /**
  * Sets by means of allocation the memory space of the manager
+ *
+ * @return Result of the operation, 'FAILURE' or 'SUCCESS'
  */
 unsigned int MemoryManager::setMemory()
 {
-   if (cudaMalloc((void**) &memory, getNumBuckets()*itemSize) != cudaSuccess)
+   if (cudaMalloc((void**) &memory, getNumBuckets()*itemSize*utilisation)
+                                                               != cudaSuccess)
       return FAILURE;
    return SUCCESS;
+}
+
+/**
+ * Sets the utilisation percentage insatnce variable
+ *
+ * @param utilisation The new utilisation percentage
+ */
+void MemoryManager::setUtilisation(float utilisation)
+{
+   this->utilisation = utilisation;
+}
+
+/**
+ * Returns a copy of the current utilisation percentage
+ *
+ * @return A copy of the current utilisation percentage
+ */
+float MemoryManager::getUtilisation()
+{
+   return utilisation;
 }

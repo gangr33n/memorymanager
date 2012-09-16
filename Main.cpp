@@ -11,8 +11,8 @@ int main(int argc, char* argv[])
 {
    MemoryManager* manager;
    int i, j, matrixSide;
-   float** temp;
-   /*struct timeval start, end;*/
+   float* temp;
+   LARGE_INTEGER start, end, freq;
    FILE* fp;
    char line[LINE_LENGTH];
    char* token;
@@ -21,34 +21,42 @@ int main(int argc, char* argv[])
    /*check for correct command line input*/
    if (argc != NUM_ARGS)
    {
-      cerr << "Please select a memory manager by entering" <<
-            "'memorymanager {fixed|fixed_monitor|variable|variable_monitor}" <<
-                                                " {arraySize} {matrixFile}'\n";
+      cerr << "Please select a memory manager by entering 'memorymanager" <<
+	                    "{fixed|variable|monitor} {arraySize} {matrixFile}'\n";
       exit(EXIT_FAILURE);
    }
    matrixSide = atoi(argv[ARG_SIZE]);
 
    /*allocate space for temporary and pointer arrays*/
-   temp = new float*[matrixSide];
-   for (i = 0; i < matrixSide; i++)
-      temp[i] = new float[matrixSide];
+   temp = new float[matrixSide * matrixSide];
+   if (temp == NULL)
+   {
+      cerr << "Unable to allocate memory! Press enter to continue...";
+      exit(EXIT_FAILURE);
+   }
    
+   /*necesary for microsecond accuracy*/
+   QueryPerformanceFrequency(&freq);
+
    /*1. initialise memory*/
-   /*gettimeofday(&start, NULL);*/
+   QueryPerformanceCounter(&start);
    if (strcmp(argv[ARG_TYPE], FIXED) == 0)
-      manager = new FixedSizeMemoryManager(matrixSide, sizeof(float));
+      manager = new FixedSizeMemoryManager(matrixSide, matrixSide,
+                                                               sizeof(float));
    else if (strcmp(argv[ARG_TYPE], VARIABLE) == 0)
-      manager = new VariableSizeMemoryManager(matrixSide, sizeof(float));
+      manager = new VariableSizeMemoryManager(matrixSide, matrixSide, 
+                                          sizeof(float), VARIABLE_UTILISATION);
    else if (strcmp(argv[ARG_TYPE], MONITOR) == 0)
-      manager = new MemoryMonitor(matrixSide, sizeof(float));
+      manager = new MemoryMonitor(matrixSide, matrixSide, sizeof(float),
+                                                         MONITOR_UTILISATION);
    else
    {
       cerr << "Invalid Manager type!\n";
       exit(EXIT_FAILURE);
    }
-   /*gettimeofday(&end, NULL);
-   cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
+   QueryPerformanceCounter(&end);
+   /*cout << (double)(end.QuadPart - start.QuadPart) / freq.QuadPart <<
+                                                                        "us,";*/
 
    /*2. load data*/
    fp = fopen(argv[FILE_NAME], READ_ONLY);
@@ -57,7 +65,7 @@ int main(int argc, char* argv[])
       cerr << "Unable to open input file!\n";
       exit(EXIT_FAILURE);
    }
-   /*gettimeofday(&start, NULL);*/
+   QueryPerformanceCounter(&start);
    i = 0;
    while (i < matrixSide && fgets(line, LINE_LENGTH, fp) != NULL)
    {
@@ -65,33 +73,31 @@ int main(int argc, char* argv[])
       token = strtok(line, DELIM);
       do
       {
-         temp[i][j] = atof(token);
+         temp[i * matrixSide + j] = atof(token);
          j++;
       } while (j < matrixSide && (token = strtok(NULL, DELIM)) != NULL);
       i++;
    }
-   /*gettimeofday(&end, NULL);
+   QueryPerformanceCounter(&end);
    fclose(fp);
-   cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
+   /*cout << (double)(end.QuadPart - start.QuadPart) / freq.QuadPart << "us,";*/
    
    /*3. request and set each element*/
-   /*gettimeofday(&start, NULL);*/
+   QueryPerformanceCounter(&start);
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
       {
-         if (temp[i][j] == 0)
+         if (temp[i * matrixSide + j] == 0)
             continue;
-         manager->set(i, j, &temp[i][j], sizeof(float));
+         manager->set(i, j, &temp[i * matrixSide + j], sizeof(float));
       }
    }
-   /*gettimeofday(&end, NULL);
-   cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
+   QueryPerformanceCounter(&end);
+   /*cout << (double)(end.QuadPart - start.QuadPart) / freq.QuadPart << "us,";*/
 
    /*4. access each element*/
-   /*gettimeofday(&start, NULL);*/
+   QueryPerformanceCounter(&start);
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
@@ -103,9 +109,8 @@ int main(int argc, char* argv[])
       }
       cerr << "\n";
    }
-   /*gettimeofday(&end, NULL);
-   cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
+   QueryPerformanceCounter(&end);
+   /*cout << (double)(end.QuadPart - start.QuadPart) / freq.QuadPart << "us,";*/
 
    /*5. write results to disk*/
    fp = fopen(OUT_FILE, WRITE_ONLY);
@@ -114,7 +119,7 @@ int main(int argc, char* argv[])
       cerr << "Unable to open output file!\n";
       exit(EXIT_FAILURE);
    }
-   /*gettimeofday(&start, NULL);*/
+   QueryPerformanceCounter(&start);
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
@@ -128,14 +133,13 @@ int main(int argc, char* argv[])
       }
       fprintf(fp, "\n");
    }
-   /*gettimeofday(&end, NULL);
+   QueryPerformanceCounter(&end);
    fclose(fp);
    unlink(OUT_FILE);
-   cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
+   /*cout << (double)(end.QuadPart - start.QuadPart) / freq.QuadPart << "us,";*/
 
    /*6. delete every second element, access every element*/
-   /*gettimeofday(&start, NULL);*/
+   QueryPerformanceCounter(&start);
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j+=2)
@@ -143,12 +147,11 @@ int main(int argc, char* argv[])
          manager->del(i, j);
       }
    }
-   /*gettimeofday(&end, NULL);
-   cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us,";*/
+   QueryPerformanceCounter(&end);
+   /*cout << (double)(end.QuadPart - start.QuadPart) / freq.QuadPart << "us,";*/
 
    /*7. access every element, test shows performance after deletion*/
-   /*gettimeofday(&start, NULL);*/
+   QueryPerformanceCounter(&start);
    for (i = 0; i < matrixSide; i++)
    {
       for (j = 0; j < matrixSide; j++)
@@ -160,13 +163,10 @@ int main(int argc, char* argv[])
       }
       cerr << "\n";
    }
-   /*gettimeofday(&end, NULL);
-   cout << ((end.tv_sec*MILLION+end.tv_usec) -
-                                 (start.tv_sec*MILLION+start.tv_usec)) << "us";
+   QueryPerformanceCounter(&end);
+   /*cout << (double)(end.QuadPart - start.QuadPart) / freq.QuadPart << "us";*/
 
    /*free local memory*/
-   for (i = 0; i < matrixSide; i++)
-      delete[] temp[i];
    delete[] temp;
    manager->cleanup();
    delete manager;

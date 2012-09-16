@@ -12,39 +12,24 @@
  * developing for my final year Design project at RMIT University
  */
  
-#ifndef VARIABLESIZEMEMORYMANAGER
-#define VARIABLESIZEMEMORYMANAGER
+#ifndef CVARIABLESIZEMEMORYMANAGER
+#define CVARIABLESIZEMEMORYMANAGER
 
-#include "MemoryManager.h"
+#include "CMemoryManager.h"
+#include "VariableSizeMemoryManager.h"
 #include "Bitmap.h"
 
-typedef struct variablesizebucket
+class CVariableSizeMemoryManager : public CMemoryManager
 {
-   unsigned int size;
-   unsigned char* firstByte;
-} VariableSizeBucket;
-
-class VariableSizeMemoryManager : public MemoryManager
-{
-   /*constructor*/
-   public:
-      VariableSizeMemoryManager(unsigned int, unsigned int, unsigned int,
-                                                                        float);
-      ~VariableSizeMemoryManager();
-   
    /*methods*/
    public:
       unsigned int get(void*, unsigned int, unsigned int);
       unsigned int set(unsigned int, unsigned int, void*, unsigned int);
-      unsigned int del(unsigned int, unsigned int);
-	  VariableSizeBucket* getReferences();
-      void cleanup();
+	  virtual void copyReferences(VariableSizeMemoryManager*);
 
    /*variables*/
    private:
       VariableSizeBucket* references; /*REFERS TO DEVICE MEMORY*/
-      unsigned int nextFree;
-      Bitmap* bitmap;
 };
 
 #endif
