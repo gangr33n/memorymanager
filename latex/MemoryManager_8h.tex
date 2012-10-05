@@ -1,58 +1,39 @@
-\hypertarget{MemoryManager_8h}{
-\section{MemoryManager.h File Reference}
-\label{MemoryManager_8h}\index{MemoryManager.h@{MemoryManager.h}}
+\hypertarget{MemoryManager_8h}{\section{\-Memory\-Manager.\-h \-File \-Reference}
+\label{MemoryManager_8h}\index{\-Memory\-Manager.\-h@{\-Memory\-Manager.\-h}}
 }
-{\ttfamily \#include $<$iostream$>$}\par
-{\ttfamily \#include $<$cstring$>$}\par
-{\ttfamily \#include $<$cstdlib$>$}\par
-\subsection*{Classes}
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$cstring$>$}\*
+{\ttfamily \#include $<$cstdlib$>$}\*
+{\ttfamily \#include $<$cuda\-\_\-runtime\-\_\-api.\-h$>$}\*
+\subsection*{\-Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classMemoryManager}{MemoryManager}
+class \hyperlink{classMemoryManager}{\-Memory\-Manager}
 \end{DoxyCompactItemize}
-\subsection*{Defines}
+\subsection*{\-Defines}
 \begin{DoxyCompactItemize}
 \item 
-\#define \hyperlink{MemoryManager_8h_aa93f0eb578d23995850d61f7d61c55c1}{FALSE}~0
+\hypertarget{MemoryManager_8h_aa93f0eb578d23995850d61f7d61c55c1}{\#define {\bfseries \-F\-A\-L\-S\-E}~0}\label{MemoryManager_8h_aa93f0eb578d23995850d61f7d61c55c1}
+
 \item 
-\#define \hyperlink{MemoryManager_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{TRUE}~1
+\hypertarget{MemoryManager_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{\#define {\bfseries \-T\-R\-U\-E}~1}\label{MemoryManager_8h_aa8cecfc5c5c054d2875c03e77b7be15d}
+
 \item 
-\#define \hyperlink{MemoryManager_8h_a6d58f9ac447476b4e084d7ca383f5183}{FAILURE}~0
+\hypertarget{MemoryManager_8h_a6d58f9ac447476b4e084d7ca383f5183}{\#define {\bfseries \-F\-A\-I\-L\-U\-R\-E}~0}\label{MemoryManager_8h_a6d58f9ac447476b4e084d7ca383f5183}
+
 \item 
-\#define \hyperlink{MemoryManager_8h_aa90cac659d18e8ef6294c7ae337f6b58}{SUCCESS}~1
+\hypertarget{MemoryManager_8h_aa90cac659d18e8ef6294c7ae337f6b58}{\#define {\bfseries \-S\-U\-C\-C\-E\-S\-S}~1}\label{MemoryManager_8h_aa90cac659d18e8ef6294c7ae337f6b58}
+
 \end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\begin{DoxyAuthor}{Author}
-Wayne Madden $<$\href{mailto:s3197676@student.rmit.edu.au}{\tt s3197676@student.rmit.edu.au}$>$ 
+\subsection{\-Detailed \-Description}
+\begin{DoxyAuthor}{\-Author}
+\-Wayne \-Madden $<$\href{mailto:s3197676@student.rmit.edu.au}{\tt s3197676@student.\-rmit.\-edu.\-au}$>$ 
 \end{DoxyAuthor}
-\begin{DoxyVersion}{Version}
-0.1
+\begin{DoxyVersion}{\-Version}
+0.\-2
 \end{DoxyVersion}
-\hypertarget{VariableSizeMemoryManager_8h_LICENSE}{}\subsection{LICENSE}\label{VariableSizeMemoryManager_8h_LICENSE}
-Free to re-\/use and reference from within code as long as the original owner is referenced as per GNU standards.\hypertarget{VariableSizeMemoryManager_8h_DESCRIPTION}{}\subsection{DESCRIPTION}\label{VariableSizeMemoryManager_8h_DESCRIPTION}
-This is an early version of the memory manager Superclass that I am developing for my final year design project at RMIT University. This class is extended by the different types of memory manager that can be used for the large matrices in the project. 
-
-\subsection{Define Documentation}
-\hypertarget{MemoryManager_8h_a6d58f9ac447476b4e084d7ca383f5183}{
-\index{MemoryManager.h@{MemoryManager.h}!FAILURE@{FAILURE}}
-\index{FAILURE@{FAILURE}!MemoryManager.h@{MemoryManager.h}}
-\subsubsection[{FAILURE}]{\setlength{\rightskip}{0pt plus 5cm}\#define FAILURE~0}}
-\label{MemoryManager_8h_a6d58f9ac447476b4e084d7ca383f5183}
-Negative return value for functions which may or may not complete successfully. Can be used in boolean logic. \hypertarget{MemoryManager_8h_aa93f0eb578d23995850d61f7d61c55c1}{
-\index{MemoryManager.h@{MemoryManager.h}!FALSE@{FALSE}}
-\index{FALSE@{FALSE}!MemoryManager.h@{MemoryManager.h}}
-\subsubsection[{FALSE}]{\setlength{\rightskip}{0pt plus 5cm}\#define FALSE~0}}
-\label{MemoryManager_8h_aa93f0eb578d23995850d61f7d61c55c1}
-Boolean false value for evaluating true/false conditions. \hypertarget{MemoryManager_8h_aa90cac659d18e8ef6294c7ae337f6b58}{
-\index{MemoryManager.h@{MemoryManager.h}!SUCCESS@{SUCCESS}}
-\index{SUCCESS@{SUCCESS}!MemoryManager.h@{MemoryManager.h}}
-\subsubsection[{SUCCESS}]{\setlength{\rightskip}{0pt plus 5cm}\#define SUCCESS~1}}
-\label{MemoryManager_8h_aa90cac659d18e8ef6294c7ae337f6b58}
-Positive return value for functions which may or may not complete successfully. Can be used in boolean logic. \hypertarget{MemoryManager_8h_aa8cecfc5c5c054d2875c03e77b7be15d}{
-\index{MemoryManager.h@{MemoryManager.h}!TRUE@{TRUE}}
-\index{TRUE@{TRUE}!MemoryManager.h@{MemoryManager.h}}
-\subsubsection[{TRUE}]{\setlength{\rightskip}{0pt plus 5cm}\#define TRUE~1}}
-\label{MemoryManager_8h_aa8cecfc5c5c054d2875c03e77b7be15d}
-Boolean true value for evaluating true/false conditions. 
+\hypertarget{VariableSizeMemoryManager_8h_LICENSE}{}\subsection{\-L\-I\-C\-E\-N\-S\-E}\label{VariableSizeMemoryManager_8h_LICENSE}
+\-Free to re-\/use and reference from within code as long as the original owner is referenced as per \-G\-N\-U standards\hypertarget{VariableSizeMemoryManager_8h_DESCRIPTION}{}\subsection{\-D\-E\-S\-C\-R\-I\-P\-T\-I\-O\-N}\label{VariableSizeMemoryManager_8h_DESCRIPTION}
+\-This is an early version of the \-Memory \-Manager \-Superclass that \-I am developing for my final year \-Design project at \-R\-M\-I\-T \-University 

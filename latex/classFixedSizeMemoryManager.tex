@@ -1,112 +1,32 @@
-\hypertarget{classFixedSizeMemoryManager}{
-\section{FixedSizeMemoryManager Class Reference}
-\label{classFixedSizeMemoryManager}\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}}
+\hypertarget{classFixedSizeMemoryManager}{\section{\-Fixed\-Size\-Memory\-Manager \-Class \-Reference}
+\label{classFixedSizeMemoryManager}\index{\-Fixed\-Size\-Memory\-Manager@{\-Fixed\-Size\-Memory\-Manager}}
 }
-Inheritance diagram for FixedSizeMemoryManager:\begin{figure}[H]
+\-Inheritance diagram for \-Fixed\-Size\-Memory\-Manager\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2cm]{classFixedSizeMemoryManager}
+\includegraphics[height=2.000000cm]{classFixedSizeMemoryManager}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classFixedSizeMemoryManager_a6308e2a1c22a22b51a926e8cdfb16cfc}{FixedSizeMemoryManager} (unsigned int, unsigned int)
+\hypertarget{classFixedSizeMemoryManager_acf48b7c18f8a244bf6d4be7c1ed188a7}{{\bfseries \-Fixed\-Size\-Memory\-Manager} (unsigned int, unsigned int, unsigned int)}\label{classFixedSizeMemoryManager_acf48b7c18f8a244bf6d4be7c1ed188a7}
+
 \item 
-\hyperlink{classFixedSizeMemoryManager_af7977c53d24fc453ec41a1cd9663d922}{$\sim$FixedSizeMemoryManager} ()
+\hypertarget{classFixedSizeMemoryManager_a1774fac776ce22ac217388aad902357c}{unsigned int {\bfseries get} (void $\ast$, unsigned int, unsigned int)}\label{classFixedSizeMemoryManager_a1774fac776ce22ac217388aad902357c}
+
 \item 
-void $\ast$ \hyperlink{classFixedSizeMemoryManager_a25a2676e266db960adffab1630323e70}{get} (unsigned int, unsigned int)
+\hypertarget{classFixedSizeMemoryManager_a10ce34ce45161cf96e5e1232b8f45894}{unsigned int {\bfseries set} (unsigned int, unsigned int, void $\ast$, unsigned int)}\label{classFixedSizeMemoryManager_a10ce34ce45161cf96e5e1232b8f45894}
+
 \item 
-unsigned int \hyperlink{classFixedSizeMemoryManager_a10ce34ce45161cf96e5e1232b8f45894}{set} (unsigned int, unsigned int, void $\ast$, unsigned int)
+\hypertarget{classFixedSizeMemoryManager_afad762c113d7a31766d3bff489ede569}{unsigned int {\bfseries del} (unsigned int, unsigned int)}\label{classFixedSizeMemoryManager_afad762c113d7a31766d3bff489ede569}
+
 \item 
-unsigned int \hyperlink{classFixedSizeMemoryManager_afad762c113d7a31766d3bff489ede569}{del} (unsigned int, unsigned int)
-\item 
-void \hyperlink{classFixedSizeMemoryManager_a1661dd249c37ba16c409c9155985429c}{cleanup} ()
+\hypertarget{classFixedSizeMemoryManager_a1661dd249c37ba16c409c9155985429c}{void {\bfseries cleanup} ()}\label{classFixedSizeMemoryManager_a1661dd249c37ba16c409c9155985429c}
+
 \end{DoxyCompactItemize}
 
 
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{classFixedSizeMemoryManager_a6308e2a1c22a22b51a926e8cdfb16cfc}{
-\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}!FixedSizeMemoryManager@{FixedSizeMemoryManager}}
-\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}!FixedSizeMemoryManager@{FixedSizeMemoryManager}}
-\subsubsection[{FixedSizeMemoryManager}]{\setlength{\rightskip}{0pt plus 5cm}FixedSizeMemoryManager::FixedSizeMemoryManager (unsigned int {\em dimension}, \/  unsigned int {\em itemSize})}}
-\label{classFixedSizeMemoryManager_a6308e2a1c22a22b51a926e8cdfb16cfc}
-Constructor for the fixed length memory manager class. The constructor assigns the total memory frame and initialises instance variables.
-
-
-\begin{DoxyParams}{Parameters}
-\item[{\em dimension}]Number of items to be stored \item[{\em itemSize}]Size to be used for each item by the memory manager \end{DoxyParams}
-\hypertarget{classFixedSizeMemoryManager_af7977c53d24fc453ec41a1cd9663d922}{
-\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}!$\sim$FixedSizeMemoryManager@{$\sim$FixedSizeMemoryManager}}
-\index{$\sim$FixedSizeMemoryManager@{$\sim$FixedSizeMemoryManager}!FixedSizeMemoryManager@{FixedSizeMemoryManager}}
-\subsubsection[{$\sim$FixedSizeMemoryManager}]{\setlength{\rightskip}{0pt plus 5cm}FixedSizeMemoryManager::$\sim$FixedSizeMemoryManager ()}}
-\label{classFixedSizeMemoryManager_af7977c53d24fc453ec41a1cd9663d922}
-Deconstructor for the fixed length Memory Manager object. Calls super class deconstrucor only. 
-
-\subsection{Member Function Documentation}
-\hypertarget{classFixedSizeMemoryManager_a1661dd249c37ba16c409c9155985429c}{
-\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}!cleanup@{cleanup}}
-\index{cleanup@{cleanup}!FixedSizeMemoryManager@{FixedSizeMemoryManager}}
-\subsubsection[{cleanup}]{\setlength{\rightskip}{0pt plus 5cm}void FixedSizeMemoryManager::cleanup ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{classFixedSizeMemoryManager_a1661dd249c37ba16c409c9155985429c}
-No memory is dynamically allocated to the fixed size memory manager, all memory is deleted by the super class deconstructor 
-
-Implements \hyperlink{classMemoryManager_ab24d56675e49909dfa6ccc67163d9add}{MemoryManager}.
-
-\hypertarget{classFixedSizeMemoryManager_afad762c113d7a31766d3bff489ede569}{
-\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}!del@{del}}
-\index{del@{del}!FixedSizeMemoryManager@{FixedSizeMemoryManager}}
-\subsubsection[{del}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int FixedSizeMemoryManager::del (unsigned int {\em x}, \/  unsigned int {\em y})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{classFixedSizeMemoryManager_afad762c113d7a31766d3bff489ede569}
-Deletes an element and zeroes the memory
-
-
-\begin{DoxyParams}{Parameters}
-\item[{\em x}]X co-\/ordinate of bucket to be retrieved. \item[{\em y}]Y co-\/ordinate of bucket to be retrieved.\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Result of operation, SUCCESS if successful, FAILURE if unsuccessful. Process is unsuccessful when the target is not already allocated. 
-\end{DoxyReturn}
-
-
-Implements \hyperlink{classMemoryManager_af63cdf4a0fdbd5eb328e13959ff4c5b5}{MemoryManager}.
-
-\hypertarget{classFixedSizeMemoryManager_a25a2676e266db960adffab1630323e70}{
-\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}!get@{get}}
-\index{get@{get}!FixedSizeMemoryManager@{FixedSizeMemoryManager}}
-\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}void $\ast$ FixedSizeMemoryManager::get (unsigned int {\em x}, \/  unsigned int {\em y})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{classFixedSizeMemoryManager_a25a2676e266db960adffab1630323e70}
-Returns a pointer to the element within the bucket specified.
-
-
-\begin{DoxyParams}{Parameters}
-\item[{\em x}]X co-\/ordinate of bucket to be retrieved. \item[{\em y}]Y co-\/ordinate of bucket to be retrieved.\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Pointer to the element. 
-\end{DoxyReturn}
-
-
-Implements \hyperlink{classMemoryManager_ad1786ab026c6077405e3c963e05d4a26}{MemoryManager}.
-
-\hypertarget{classFixedSizeMemoryManager_a10ce34ce45161cf96e5e1232b8f45894}{
-\index{FixedSizeMemoryManager@{FixedSizeMemoryManager}!set@{set}}
-\index{set@{set}!FixedSizeMemoryManager@{FixedSizeMemoryManager}}
-\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int FixedSizeMemoryManager::set (unsigned int {\em x}, \/  unsigned int {\em y}, \/  void $\ast$ {\em data}, \/  unsigned int {\em size})\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
-\label{classFixedSizeMemoryManager_a10ce34ce45161cf96e5e1232b8f45894}
-Sets the value of an already allocated bucket.
-
-
-\begin{DoxyParams}{Parameters}
-\item[{\em x}]X co-\/ordinate of bucket to be retrieved. \item[{\em y}]Y co-\/ordinate of bucket to be retrieved. \item[{\em data}]Pointer to memory containing new value to be stored. \item[{\em size}]The size of the element in 'void$\ast$ data'.\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Result of operation, SUCCESS if successful, FAILURE if unsuccessful. Process is unsuccessful when the target is not already allocated. 
-\end{DoxyReturn}
-
-
-Implements \hyperlink{classMemoryManager_a53a7f4663f763985ce93f36d76d08370}{MemoryManager}.
-
-
-
-The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{FixedSizeMemoryManager_8h}{FixedSizeMemoryManager.h}\item 
-FixedSizeMemoryManager.cpp\end{DoxyCompactItemize}
+\hyperlink{FixedSizeMemoryManager_8h}{\-Fixed\-Size\-Memory\-Manager.\-h}\end{DoxyCompactItemize}

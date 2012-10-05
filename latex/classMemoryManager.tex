@@ -1,155 +1,62 @@
-\hypertarget{classMemoryManager}{
-\section{MemoryManager Class Reference}
-\label{classMemoryManager}\index{MemoryManager@{MemoryManager}}
+\hypertarget{classMemoryManager}{\section{\-Memory\-Manager \-Class \-Reference}
+\label{classMemoryManager}\index{\-Memory\-Manager@{\-Memory\-Manager}}
 }
-Inheritance diagram for MemoryManager:\begin{figure}[H]
+\-Inheritance diagram for \-Memory\-Manager\-:\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=1.97531cm]{classMemoryManager}
+\includegraphics[height=1.975309cm]{classMemoryManager}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classMemoryManager_ad4570910ccfc14b2da679bee58ee8f48}{$\sim$MemoryManager} ()
+\hypertarget{classMemoryManager_a6ecf3b17cbec537ed29aa16a5bdafaa2}{unsigned int {\bfseries get\-X\-Dimension} ()}\label{classMemoryManager_a6ecf3b17cbec537ed29aa16a5bdafaa2}
+
 \item 
-unsigned int \hyperlink{classMemoryManager_a1ee0a507083f71a998f4b5183e34e694}{getDimension} ()
+\hypertarget{classMemoryManager_a1a0ae66dbf469ed771ef9b2807452baf}{unsigned int {\bfseries get\-Y\-Dimension} ()}\label{classMemoryManager_a1a0ae66dbf469ed771ef9b2807452baf}
+
 \item 
-unsigned int \hyperlink{classMemoryManager_a8ed9694ea695f4533afb06fc595d371f}{getNumBuckets} ()
+\hypertarget{classMemoryManager_a8ed9694ea695f4533afb06fc595d371f}{unsigned int {\bfseries get\-Num\-Buckets} ()}\label{classMemoryManager_a8ed9694ea695f4533afb06fc595d371f}
+
 \item 
-void \hyperlink{classMemoryManager_ad415c63e1b6d3b23eb3af19577f205a9}{setDimension} (unsigned int)
+\hypertarget{classMemoryManager_aff7e7c776b6f419319193a9bd2aae7d9}{void {\bfseries set\-X\-Dimension} (unsigned int)}\label{classMemoryManager_aff7e7c776b6f419319193a9bd2aae7d9}
+
 \item 
-unsigned int \hyperlink{classMemoryManager_a0a2a789513ac6d8349cfa536e2257330}{getItemSize} ()
+\hypertarget{classMemoryManager_a49b487fdadf24be89ec5e2c23b100dd0}{void {\bfseries set\-Y\-Dimension} (unsigned int)}\label{classMemoryManager_a49b487fdadf24be89ec5e2c23b100dd0}
+
 \item 
-void \hyperlink{classMemoryManager_adf8808f7cd5cabe38563bfffa1284174}{setItemSize} (unsigned int)
+\hypertarget{classMemoryManager_a0a2a789513ac6d8349cfa536e2257330}{unsigned int {\bfseries get\-Item\-Size} ()}\label{classMemoryManager_a0a2a789513ac6d8349cfa536e2257330}
+
 \item 
-unsigned char $\ast$ \hyperlink{classMemoryManager_a0b8102e0c6b8c3609678e11d1384efb2}{getMemory} ()
+\hypertarget{classMemoryManager_adf8808f7cd5cabe38563bfffa1284174}{void {\bfseries set\-Item\-Size} (unsigned int)}\label{classMemoryManager_adf8808f7cd5cabe38563bfffa1284174}
+
 \item 
-void \hyperlink{classMemoryManager_adc25f40b62f5dadf19c378cdac747adc}{setMemory} ()
+\hypertarget{classMemoryManager_a914166c1616d285e59b1c409561c02e4}{unsigned char $\ast$ {\bfseries get\-Memory} ()}\label{classMemoryManager_a914166c1616d285e59b1c409561c02e4}
+
 \item 
-virtual void $\ast$ \hyperlink{classMemoryManager_ad1786ab026c6077405e3c963e05d4a26}{get} (unsigned int, unsigned int)=0
+\hypertarget{classMemoryManager_a878d18b31d6cd9bd61a24a2b1ae853cf}{unsigned int {\bfseries set\-Memory} ()}\label{classMemoryManager_a878d18b31d6cd9bd61a24a2b1ae853cf}
+
 \item 
-virtual unsigned int \hyperlink{classMemoryManager_a53a7f4663f763985ce93f36d76d08370}{set} (unsigned int, unsigned int, void $\ast$, unsigned int)=0
+\hypertarget{classMemoryManager_af55ecb905bf5e0a9c7c2329eae083503}{void {\bfseries set\-Utilisation} (float)}\label{classMemoryManager_af55ecb905bf5e0a9c7c2329eae083503}
+
 \item 
-virtual unsigned int \hyperlink{classMemoryManager_af63cdf4a0fdbd5eb328e13959ff4c5b5}{del} (unsigned int, unsigned int)=0
+\hypertarget{classMemoryManager_ad6949e320f1586586e8f5801b9bdbd15}{float {\bfseries get\-Utilisation} ()}\label{classMemoryManager_ad6949e320f1586586e8f5801b9bdbd15}
+
 \item 
-virtual void \hyperlink{classMemoryManager_ab24d56675e49909dfa6ccc67163d9add}{cleanup} ()=0
+\hypertarget{classMemoryManager_ab657266701da9d28a2822314767b6910}{virtual unsigned int {\bfseries get} (void $\ast$, unsigned int, unsigned int)=0}\label{classMemoryManager_ab657266701da9d28a2822314767b6910}
+
+\item 
+\hypertarget{classMemoryManager_a53a7f4663f763985ce93f36d76d08370}{virtual unsigned int {\bfseries set} (unsigned int, unsigned int, void $\ast$, unsigned int)=0}\label{classMemoryManager_a53a7f4663f763985ce93f36d76d08370}
+
+\item 
+\hypertarget{classMemoryManager_af63cdf4a0fdbd5eb328e13959ff4c5b5}{virtual unsigned int {\bfseries del} (unsigned int, unsigned int)=0}\label{classMemoryManager_af63cdf4a0fdbd5eb328e13959ff4c5b5}
+
+\item 
+\hypertarget{classMemoryManager_ab24d56675e49909dfa6ccc67163d9add}{virtual void {\bfseries cleanup} ()=0}\label{classMemoryManager_ab24d56675e49909dfa6ccc67163d9add}
+
 \end{DoxyCompactItemize}
 
 
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{classMemoryManager_ad4570910ccfc14b2da679bee58ee8f48}{
-\index{MemoryManager@{MemoryManager}!$\sim$MemoryManager@{$\sim$MemoryManager}}
-\index{$\sim$MemoryManager@{$\sim$MemoryManager}!MemoryManager@{MemoryManager}}
-\subsubsection[{$\sim$MemoryManager}]{\setlength{\rightskip}{0pt plus 5cm}MemoryManager::$\sim$MemoryManager ()}}
-\label{classMemoryManager_ad4570910ccfc14b2da679bee58ee8f48}
-The memory manager super class deconstructor deallocates dynamic memory that was allocated when the manager was created. As the base class is abstract and cannot be instantiated, this is only called when sub-\/class deconstructors are called 
-
-\subsection{Member Function Documentation}
-\hypertarget{classMemoryManager_ab24d56675e49909dfa6ccc67163d9add}{
-\index{MemoryManager@{MemoryManager}!cleanup@{cleanup}}
-\index{cleanup@{cleanup}!MemoryManager@{MemoryManager}}
-\subsubsection[{cleanup}]{\setlength{\rightskip}{0pt plus 5cm}virtual void MemoryManager::cleanup ()\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
-\label{classMemoryManager_ab24d56675e49909dfa6ccc67163d9add}
-Undefined function to delete memory when the memory manager is deleted. Overriden by subclass. 
-
-Implemented in \hyperlink{classFixedSizeMemoryManager_a1661dd249c37ba16c409c9155985429c}{FixedSizeMemoryManager}, \hyperlink{classMemoryMonitor_ac31e19cbcae35d0fb865c3380f355e37}{MemoryMonitor}, and \hyperlink{classVariableSizeMemoryManager_a554860923dc36f775fd5037078a42aeb}{VariableSizeMemoryManager}.
-
-\hypertarget{classMemoryManager_af63cdf4a0fdbd5eb328e13959ff4c5b5}{
-\index{MemoryManager@{MemoryManager}!del@{del}}
-\index{del@{del}!MemoryManager@{MemoryManager}}
-\subsubsection[{del}]{\setlength{\rightskip}{0pt plus 5cm}virtual unsigned int MemoryManager::del (unsigned {\em int}, \/  unsigned {\em int})\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
-\label{classMemoryManager_af63cdf4a0fdbd5eb328e13959ff4c5b5}
-Undefined function to delete an element and free the memory. Overriden by subclass. 
-
-Implemented in \hyperlink{classFixedSizeMemoryManager_afad762c113d7a31766d3bff489ede569}{FixedSizeMemoryManager}, \hyperlink{classMemoryMonitor_a6ebe27bc008fb68397d9f400c0745c5d}{MemoryMonitor}, and \hyperlink{classVariableSizeMemoryManager_a7fca71f5a112a22d52a8ebf7ce4984a5}{VariableSizeMemoryManager}.
-
-\hypertarget{classMemoryManager_ad1786ab026c6077405e3c963e05d4a26}{
-\index{MemoryManager@{MemoryManager}!get@{get}}
-\index{get@{get}!MemoryManager@{MemoryManager}}
-\subsubsection[{get}]{\setlength{\rightskip}{0pt plus 5cm}virtual void$\ast$ MemoryManager::get (unsigned {\em int}, \/  unsigned {\em int})\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
-\label{classMemoryManager_ad1786ab026c6077405e3c963e05d4a26}
-Undefined function to return a pointer to the element specified. Overridden by subclass. 
-
-Implemented in \hyperlink{classFixedSizeMemoryManager_a25a2676e266db960adffab1630323e70}{FixedSizeMemoryManager}, \hyperlink{classMemoryMonitor_a547ef93f8d1664f7f4a5c41f4a922caa}{MemoryMonitor}, and \hyperlink{classVariableSizeMemoryManager_a9be29ac3fbaba3824820d6d9a6e81243}{VariableSizeMemoryManager}.
-
-\hypertarget{classMemoryManager_a1ee0a507083f71a998f4b5183e34e694}{
-\index{MemoryManager@{MemoryManager}!getDimension@{getDimension}}
-\index{getDimension@{getDimension}!MemoryManager@{MemoryManager}}
-\subsubsection[{getDimension}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int MemoryManager::getDimension ()}}
-\label{classMemoryManager_a1ee0a507083f71a998f4b5183e34e694}
-Accessor for the dimension variable
-
-\begin{DoxyReturn}{Returns}
-A copy of the numBuckets variable 
-\end{DoxyReturn}
-\hypertarget{classMemoryManager_a0a2a789513ac6d8349cfa536e2257330}{
-\index{MemoryManager@{MemoryManager}!getItemSize@{getItemSize}}
-\index{getItemSize@{getItemSize}!MemoryManager@{MemoryManager}}
-\subsubsection[{getItemSize}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int MemoryManager::getItemSize ()}}
-\label{classMemoryManager_a0a2a789513ac6d8349cfa536e2257330}
-Accessor for the itemSize variable
-
-\begin{DoxyReturn}{Returns}
-A copy of the itemSize variable 
-\end{DoxyReturn}
-\hypertarget{classMemoryManager_a0b8102e0c6b8c3609678e11d1384efb2}{
-\index{MemoryManager@{MemoryManager}!getMemory@{getMemory}}
-\index{getMemory@{getMemory}!MemoryManager@{MemoryManager}}
-\subsubsection[{getMemory}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char $\ast$ MemoryManager::getMemory ()}}
-\label{classMemoryManager_a0b8102e0c6b8c3609678e11d1384efb2}
-Accessor for the base memory address
-
-\begin{DoxyReturn}{Returns}
-Pointer to the first byte of managed memory 
-\end{DoxyReturn}
-\hypertarget{classMemoryManager_a8ed9694ea695f4533afb06fc595d371f}{
-\index{MemoryManager@{MemoryManager}!getNumBuckets@{getNumBuckets}}
-\index{getNumBuckets@{getNumBuckets}!MemoryManager@{MemoryManager}}
-\subsubsection[{getNumBuckets}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int MemoryManager::getNumBuckets ()}}
-\label{classMemoryManager_a8ed9694ea695f4533afb06fc595d371f}
-Accessor for the number of elements in the matrix
-
-\begin{DoxyReturn}{Returns}
-The number of elements in the matrix 
-\end{DoxyReturn}
-\hypertarget{classMemoryManager_a53a7f4663f763985ce93f36d76d08370}{
-\index{MemoryManager@{MemoryManager}!set@{set}}
-\index{set@{set}!MemoryManager@{MemoryManager}}
-\subsubsection[{set}]{\setlength{\rightskip}{0pt plus 5cm}virtual unsigned int MemoryManager::set (unsigned {\em int}, \/  unsigned {\em int}, \/  void $\ast$, \/  unsigned {\em int})\hspace{0.3cm}{\ttfamily  \mbox{[}pure virtual\mbox{]}}}}
-\label{classMemoryManager_a53a7f4663f763985ce93f36d76d08370}
-Undefined function to set the value of an already allocated bucket. Overridden by subclass. 
-
-Implemented in \hyperlink{classFixedSizeMemoryManager_a10ce34ce45161cf96e5e1232b8f45894}{FixedSizeMemoryManager}, \hyperlink{classMemoryMonitor_a57b86aac696c79f2c3018ee9878e15a3}{MemoryMonitor}, and \hyperlink{classVariableSizeMemoryManager_af13ce44cb2a151e6e31723b29e6a129d}{VariableSizeMemoryManager}.
-
-\hypertarget{classMemoryManager_ad415c63e1b6d3b23eb3af19577f205a9}{
-\index{MemoryManager@{MemoryManager}!setDimension@{setDimension}}
-\index{setDimension@{setDimension}!MemoryManager@{MemoryManager}}
-\subsubsection[{setDimension}]{\setlength{\rightskip}{0pt plus 5cm}void MemoryManager::setDimension (unsigned int {\em dimension})}}
-\label{classMemoryManager_ad415c63e1b6d3b23eb3af19577f205a9}
-Sets the number of buckets used by the memory manager
-
-
-\begin{DoxyParams}{Parameters}
-\item[{\em dimension}]The size of the new matrix to be mapped by the manager \end{DoxyParams}
-\hypertarget{classMemoryManager_adf8808f7cd5cabe38563bfffa1284174}{
-\index{MemoryManager@{MemoryManager}!setItemSize@{setItemSize}}
-\index{setItemSize@{setItemSize}!MemoryManager@{MemoryManager}}
-\subsubsection[{setItemSize}]{\setlength{\rightskip}{0pt plus 5cm}void MemoryManager::setItemSize (unsigned int {\em itemSize})}}
-\label{classMemoryManager_adf8808f7cd5cabe38563bfffa1284174}
-Sets the item size stored by the memory manager
-
-
-\begin{DoxyParams}{Parameters}
-\item[{\em itemSize}]The new item size for the manager \end{DoxyParams}
-\hypertarget{classMemoryManager_adc25f40b62f5dadf19c378cdac747adc}{
-\index{MemoryManager@{MemoryManager}!setMemory@{setMemory}}
-\index{setMemory@{setMemory}!MemoryManager@{MemoryManager}}
-\subsubsection[{setMemory}]{\setlength{\rightskip}{0pt plus 5cm}void MemoryManager::setMemory ()}}
-\label{classMemoryManager_adc25f40b62f5dadf19c378cdac747adc}
-Sets by means of allocation the memory space of the manager 
-
-The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\-The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
 \item 
-\hyperlink{MemoryManager_8h}{MemoryManager.h}\item 
-MemoryManager.cpp\end{DoxyCompactItemize}
+\hyperlink{MemoryManager_8h}{\-Memory\-Manager.\-h}\end{DoxyCompactItemize}
